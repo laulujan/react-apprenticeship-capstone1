@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardContainer } from './CardWrapper.styled';
+import { CardContainer } from './CardWrapper.styled.js';
 import Card from '../Card/Card';
 
 const CardWrapper = () => {
