@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, MenuIcon } from './Menu.styled.js';
-import MenuDropdown from '../MenuDropdown/MenuDropdown';
+import Dropdown from '../Dropdown/Dropdown';
 
 const Menu = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -15,7 +15,7 @@ const Menu = () => {
       <Button onClick={handleClick}>
         <MenuIcon />
       </Button>
-      {isDropDownOpen && <MenuDropdown />}
+      {isDropDownOpen && <Dropdown list={['Home', 'Favorites']} />}
     </div>
   );
 };

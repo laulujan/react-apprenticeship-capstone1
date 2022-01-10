@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const Dropdown = styled.div`
+export const MyDropdown = styled.div.attrs((props) => ({
+  className: props.className,
+}))`
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
