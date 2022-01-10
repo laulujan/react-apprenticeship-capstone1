@@ -6,7 +6,6 @@ import CardWrapper from '../../components/CardWrapper/CardWrapper';
 import { getVideos } from '../../api/mockApi';
 
 //import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
 
 function HomePage() {
   const [videosResponse, setVideosResponse] = useState([]);
