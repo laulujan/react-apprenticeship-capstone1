@@ -2,15 +2,10 @@ import React from 'react';
 import { CardContainer } from './CardWrapper.styled.js';
 import Card from '../Card/Card';
 
-const CardWrapper = () => {
+const CardWrapper = ({ videos }) => {
   return (
     <CardContainer>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {videos && videos.map((video) => <Card video={video} key={video.etag} />)}
     </CardContainer>
   );
 };
