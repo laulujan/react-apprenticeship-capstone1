@@ -4,7 +4,7 @@ import Card from '../Card/Card';
 
 const CardWrapper = ({ videos }) => {
   return (
-    <CardContainer>
+    <CardContainer className="card-container">
       {videos && videos.map((video) => <Card video={video} key={video.etag} />)}
     </CardContainer>
   );

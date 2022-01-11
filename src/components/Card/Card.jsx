@@ -9,7 +9,7 @@ import {
 
 const Card = ({ video }) => {
   return (
-    <MyCard>
+    <MyCard className="card">
       <CardImage src={video.snippet.thumbnails.medium.url} />
       <CardContent>
         <CardTitle>{video.snippet.title}</CardTitle>

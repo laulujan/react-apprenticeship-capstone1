@@ -11,7 +11,11 @@ const ToggleTheme = () => {
   return (
     <div>
       <ThemeButton onClick={handleClick}>
-        {isDarkThemeOn ? <LightIcon /> : <DarkIcon />}
+        {isDarkThemeOn ? (
+          <LightIcon alt="light theme" />
+        ) : (
+          <DarkIcon alt="dark theme" />
+        )}
       </ThemeButton>
     </div>
   );

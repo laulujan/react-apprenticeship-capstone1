@@ -8,15 +8,17 @@ import LoginMenu from '../LoginMenu/LoginMenu';
 
 const Navbar = () => {
   return (
-    <Flex px={2} alignItems="center">
-      <Menu />
-      <Box width={1 / 2}>
-        <SearchBar />
-      </Box>
-      <Box mx="auto" />
-      <ToggleTheme />
-      <LoginMenu />
-    </Flex>
+    <nav>
+      <Flex px={2} alignItems="center" className="navbar">
+        <Menu />
+        <Box width={1 / 2}>
+          <SearchBar />
+        </Box>
+        <Box mx="auto" />
+        <ToggleTheme />
+        <LoginMenu />
+      </Flex>
+    </nav>
   );
 };
 
