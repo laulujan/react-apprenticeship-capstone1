@@ -8,7 +8,6 @@ const LoginMenu = () => {
 
   const handleClick = () => {
     setIsDropDownOpen(!isDropDownOpen);
-    console.log('open dropdown');
   };
   return (
     <div>

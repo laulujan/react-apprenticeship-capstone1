@@ -7,7 +7,6 @@ const Menu = () => {
 
   const handleClick = () => {
     setIsDropDownOpen(!isDropDownOpen);
-    console.log('open dropdown');
   };
 
   return (
