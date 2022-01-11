@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
+import VideoDetails from '../../pages/VideoDetails/VideoDetails';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import Private from '../Private';
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route exact path="/login">
               <LoginPage />
+            </Route>
+            <Route exact path="/video-details">
+              <VideoDetails />
             </Route>
             <Private exact path="/secret">
               <SecretPage />
