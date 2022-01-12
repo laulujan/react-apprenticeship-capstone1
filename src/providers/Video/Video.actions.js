@@ -32,7 +32,6 @@ const fetchVideos = (dispatch) => async (searchItem) => {
       .map(dataFormat);
 
     dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: { videos } });
-    console.log(videos);
     return videos;
   } catch (error) {
     dispatch({

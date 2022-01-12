@@ -31,4 +31,5 @@ export const Title = styled.p`
   width: 100%;
   font-size: 1rem;
   line-height: 1.3;
+  word-wrap: break-word;
 `;

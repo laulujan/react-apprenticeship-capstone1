@@ -10,6 +10,12 @@ export const MyCard = styled.div`
   &:hover {
     box-shadow: 0 0 11px rgba(34, 34, 34, 0.4);
   }
+  @media (max-width: 920px) {
+    width: 15rem;
+  }
+  @media (max-width: 820px) {
+    width: 100%;
+  }
 `;
 
 export const CardContent = styled.div`
@@ -29,5 +35,6 @@ export const CardTitle = styled.h4`
 export const CardDescription = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.text};
+    word-wrap: break-word;
   `}
 `;
