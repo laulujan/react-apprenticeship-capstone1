@@ -6,13 +6,15 @@ import {
   Title,
 } from './RelatedVideos.styled';
 
-const RelatedVideos = () => {
+const RelatedVideos = ({ videosList }) => {
   return (
     <RelatedContent>
-      <VideoItem>
-        <Image src="https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s88-c-k-c0xffffffff-no-rj-mo" />
-        <Title>Wizeline</Title>
-      </VideoItem>
+      {videosList.map((video) => (
+        <VideoItem key={video.id}>
+          <Image src={video.image} alt={video.title} />
+          <Title>{video.title}</Title>
+        </VideoItem>
+      ))}
     </RelatedContent>
   );
 };

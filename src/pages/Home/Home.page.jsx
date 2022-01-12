@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import Navbar from '../../components/Navbar/Navbar';
 import CardWrapper from '../../components/CardWrapper/CardWrapper';
-import { getVideos } from '../../api/mockApi';
+import { useVideo } from '../../providers/Video/Video.provider';
 
 function HomePage() {
-  const [videosResponse, setVideosResponse] = useState([]);
-
-  useEffect(() => {
-    getVideos().then((data) => setVideosResponse(data));
-  }, []);
+  const { videos } = useVideo();
   return (
-    <>
-      <Navbar />
-      <CardWrapper videos={videosResponse.items} />
-    </>
+    <>{videos ? <CardWrapper videos={videos} /> : <div>No videos found</div>}</>
   );
 }
 

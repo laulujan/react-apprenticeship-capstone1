@@ -10,7 +10,7 @@ import {
   UnFavIcon,
 } from './VideoPlayer.styled';
 
-const VideoPlayer = () => {
+const VideoPlayer = ({ video }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleClick = () => {
@@ -21,21 +21,18 @@ const VideoPlayer = () => {
       <iframe
         width="100%"
         height="534px"
-        src="https://www.youtube.com/embed/GNCd_ERZvZM"
+        src={`https://www.youtube.com/embed/${video.id}`}
         frameBorder="0"
         title="title"
       />
       <VideoContent>
         <VideoBox>
-          <VideoTitle>
-            some super big video title goes here and i want to se how it looks
-            when i render it
-          </VideoTitle>
+          <VideoTitle>{video.title}</VideoTitle>
           <FavoriteButton onClick={handleClick}>
             {isFavorite ? <FavIcon /> : <UnFavIcon />}
           </FavoriteButton>
         </VideoBox>
-        <VideoDescription>Some video description</VideoDescription>
+        <VideoDescription>{video.description}</VideoDescription>
       </VideoContent>
     </VideoContainer>
   );

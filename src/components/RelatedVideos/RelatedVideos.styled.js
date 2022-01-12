@@ -26,7 +26,9 @@ export const Image = styled.img`
   height: 90px;
 `;
 
-export const Title = styled.h4`
+export const Title = styled.p`
   margin: 1rem;
   width: 100%;
+  font-size: 1rem;
+  line-height: 1.3;
 `;

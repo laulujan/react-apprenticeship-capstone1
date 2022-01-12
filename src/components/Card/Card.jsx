@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import {
   MyCard,
   CardTitle,
@@ -6,14 +7,22 @@ import {
   CardImage,
   CardContent,
 } from './Card.styled';
+import { useVideo } from '../../providers/Video/Video.provider';
 
 const Card = ({ video }) => {
+  const history = useHistory();
+  const { setCurrentVideo } = useVideo();
+
+  const handleClick = () => {
+    setCurrentVideo(video);
+    history.push(`/video/${video.id}`);
+  };
   return (
-    <MyCard className="card">
-      <CardImage src={video.snippet.thumbnails.medium.url} />
+    <MyCard className="card" onClick={handleClick}>
+      <CardImage src={video.image} />
       <CardContent>
-        <CardTitle>{video.snippet.title}</CardTitle>
-        <CardDescription>{video.snippet.description}</CardDescription>
+        <CardTitle>{video.title}</CardTitle>
+        <CardDescription>{video.description}</CardDescription>
       </CardContent>
     </MyCard>
   );
