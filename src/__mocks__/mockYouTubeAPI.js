@@ -1,4 +1,4 @@
-export const getVideos = () => {
+const getVideos = () => {
   return [
     {
       kind: 'youtube#searchResult',
@@ -31,3 +31,5 @@ export const getVideos = () => {
     },
   ];
 };
+
+exports.getVideos = getVideos;
