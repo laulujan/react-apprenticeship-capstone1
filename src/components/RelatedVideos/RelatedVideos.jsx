@@ -9,11 +9,12 @@ import {
 import { useVideo } from '../../providers/Video/Video.provider';
 
 const RelatedVideos = ({ videosList }) => {
-  const { setCurrentVideo } = useVideo();
+  const { setCurrentVideo, fetchRelatedVideos } = useVideo();
   const history = useHistory();
 
   const handleClick = (video) => {
     setCurrentVideo(video);
+    fetchRelatedVideos(video.id);
     history.push(`/video/${video.id}`);
   };
   return (

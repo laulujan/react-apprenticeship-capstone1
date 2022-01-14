@@ -1,5 +1,6 @@
 import React from 'react';
-import CardWrapper from './CardWrapper';
+import { screen } from '@testing-library/react';
+import RelatedVideos from './RelatedVideos';
 import { mount } from '../../__mocks__/MountComponent';
 
 const mockVideo = [
@@ -34,18 +35,13 @@ const mockVideo = [
   },
 ];
 
-describe('<CardWrapper />', () => {
-  test('Render Cards images', async () => {
-    let x = mount(<CardWrapper videos={mockVideo} />);
-    expect(await x.findByRole('img')).toBeInTheDocument();
+describe('<RelatedVideos />', () => {
+  test('Render Video image', async () => {
+    mount(<RelatedVideos videosList={mockVideo} />);
+    expect(screen.getByRole('img')).toBeInTheDocument();
   });
-
-  test('Renders Cards title', async () => {
-    let x = mount(<CardWrapper videos={mockVideo} />);
-    expect(await x.findByRole('heading')).toBeInTheDocument();
-  });
-  test('Renders Cards img', async () => {
-    let x = mount(<CardWrapper videos={mockVideo} />);
-    expect(await x.findByRole('img')).toBeInTheDocument();
+  test('Render video Title', async () => {
+    mount(<RelatedVideos videosList={mockVideo} />);
+    expect(document.getElementsByTagName('p')[0]).toBeInTheDocument();
   });
 });

@@ -1,16 +1,13 @@
-/* eslint-disable no-undef */
 import React from 'react';
-import { fireEvent, screen, render } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import LoginMenu from './LoginMenu';
-import Layout from '../Layout/Layout.component';
+import { mount } from '../../__mocks__/MountComponent';
 
-test('Opens dropdown on click event', async () => {
-  render(
-    <Layout>
-      <LoginMenu />
-    </Layout>
-  );
-  const btn = screen.getByRole('button');
-  fireEvent.click(btn);
-  expect(screen.getByRole('list')).toBeInTheDocument();
+describe('<LoginMenu />', () => {
+  test('Open dropdown on click event', async () => {
+    mount(<LoginMenu />);
+    const btn = screen.getByRole('button');
+    fireEvent.click(btn);
+    expect(screen.getByText('Login')).toBeInTheDocument();
+  });
 });

@@ -16,6 +16,7 @@ const VideoPlayer = ({ video }) => {
   const handleClick = () => {
     setIsFavorite(!isFavorite);
   };
+
   return (
     <VideoContainer>
       <iframe

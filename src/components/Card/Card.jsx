@@ -19,7 +19,7 @@ const Card = ({ video }) => {
   };
   return (
     <MyCard className="card" onClick={handleClick}>
-      <CardImage src={video.image} />
+      <CardImage src={video.image} alt={video.title} />
       <CardContent>
         <CardTitle>{video.title}</CardTitle>
         <CardDescription>{video.description}</CardDescription>

@@ -1,8 +1,11 @@
-import React, { useReducer, useEffect, createContext, useContext } from 'react';
+import React, { useReducer, createContext, useContext } from 'react';
 
-import { storage } from '../../utils/storage';
-import { VIDEO_STORAGE_KEY } from '../../utils/constants';
-import { fetchVideos, setSearchItem, setCurrentVideo } from './Video.actions';
+import {
+  fetchVideos,
+  setSearchItem,
+  setCurrentVideo,
+  fetchRelatedVideos,
+} from './Video.actions';
 import { videoReducer, initialState } from './Video.reducer';
 
 const VideoContext = createContext(null);
@@ -15,21 +18,8 @@ function useVideo() {
   return context;
 }
 
-function lazyInit(state) {
-  return {
-    ...state,
-    video: storage.get(VIDEO_STORAGE_KEY),
-  };
-}
-
 const VideoProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(videoReducer, initialState, lazyInit);
-
-  useEffect(() => {
-    if (state.video) {
-      storage.set(VIDEO_STORAGE_KEY, state.video);
-    }
-  }, [state.video]);
+  const [state, dispatch] = useReducer(videoReducer, initialState);
 
   const value = {
     loading: state.loading,
@@ -37,7 +27,9 @@ const VideoProvider = ({ children }) => {
     videos: state.videos,
     video: state.video,
     searchItem: state.searchItem,
+    relatedVideos: state.relatedVideos,
     fetchVideos: fetchVideos(dispatch),
+    fetchRelatedVideos: fetchRelatedVideos(dispatch),
     setSearchItem: setSearchItem(dispatch),
     setCurrentVideo: setCurrentVideo(dispatch),
   };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import Card from './Card';
+import VideoPlayer from './VideoPlayer';
 import { mount } from '../../__mocks__/MountComponent';
 
 const mockVideo = {
@@ -33,9 +33,17 @@ const mockVideo = {
   },
 };
 
-describe('<Card />', () => {
-  test('Render card image', async () => {
-    mount(<Card video={mockVideo} />);
-    expect(screen.getByRole('img')).toBeInTheDocument();
+describe('<VideoPlayer />', () => {
+  test('Render video', async () => {
+    mount(<VideoPlayer video={mockVideo} />);
+    expect(document.getElementsByTagName('iframe')[0]).toBeInTheDocument();
+  });
+  test('Render favorite button', async () => {
+    mount(<VideoPlayer video={mockVideo} />);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+  test('Render video Title', async () => {
+    mount(<VideoPlayer video={mockVideo} />);
+    expect(screen.getByRole('heading')).toBeInTheDocument();
   });
 });

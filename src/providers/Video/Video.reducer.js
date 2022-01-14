@@ -30,6 +30,24 @@ export function videoReducer(state, action) {
         loading: false,
         error: payload.error,
       };
+    case ACTIONS.FETCH_RELATED_VIDEOS:
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
+    case ACTIONS.FETCH_RELATED_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        relatedVideos: payload.relatedVideos,
+      };
+    case ACTIONS.FETCH_RELATED_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: payload.error,
+      };
     case ACTIONS.SET_SEARCH_ITEM:
       return {
         ...state,

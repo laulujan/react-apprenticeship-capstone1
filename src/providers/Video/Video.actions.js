@@ -1,9 +1,12 @@
-import { getVideos } from '../../api/youtubeAPI';
+import { getVideos, getRelatedVideos } from '../../api/youtubeAPI';
 
 const ACTIONS = {
   FETCH_VIDEOS: 'FETCH_VIDEOS',
   FETCH_SUCCESS: 'FETCH_SUCCESS',
   FETCH_ERROR: 'FETCH_ERROR',
+  FETCH_RELATED_VIDEOS: 'FETCH_RELATED_VIDEOS',
+  FETCH_RELATED_SUCCESS: 'FETCH_RELATED_SUCCESS',
+  FETCH_RELATED_ERROR: 'FETCH_RELATED_ERROR',
   SET_SEARCH_ITEM: 'SET_SEARCH_ITEM',
   SET_CURRENT_VIDEO: 'SET_CURRENT_VIDEO',
 };
@@ -41,6 +44,30 @@ const fetchVideos = (dispatch) => async (searchItem) => {
     return null;
   }
 };
+const fetchRelatedVideos = (dispatch) => async (id) => {
+  dispatch({ type: ACTIONS.FETCH_RELATED_VIDEOS });
+  try {
+    const result = await getRelatedVideos(id);
+    const relatedVideos = result
+      .filter(
+        (video) =>
+          video.id.kind === 'youtube#video' &&
+          Object.prototype.hasOwnProperty.call(video, 'snippet')
+      )
+      .map(dataFormat);
+    dispatch({
+      type: ACTIONS.FETCH_RELATED_SUCCESS,
+      payload: { relatedVideos },
+    });
+    return relatedVideos;
+  } catch (error) {
+    dispatch({
+      type: ACTIONS.FETCH_RELATED_ERROR,
+      payload: { error: error.result.error.message },
+    });
+    return null;
+  }
+};
 
 const setSearchItem = (dispatch) => (searchItem) => {
   dispatch({ type: ACTIONS.SET_SEARCH_ITEM, payload: { searchItem } });
@@ -50,4 +77,10 @@ const setCurrentVideo = (dispatch) => (video) => {
   dispatch({ type: ACTIONS.SET_CURRENT_VIDEO, payload: { video } });
 };
 
-export { ACTIONS, fetchVideos, setSearchItem, setCurrentVideo };
+export {
+  ACTIONS,
+  fetchVideos,
+  fetchRelatedVideos,
+  setSearchItem,
+  setCurrentVideo,
+};
