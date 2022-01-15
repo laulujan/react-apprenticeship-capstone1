@@ -37,10 +37,10 @@ export const FavoriteButton = styled.button`
     border: none;
     border-radius: 100px;
     outline: none;
-    background-color: white;
+    background-color: ${theme.body};
     color: ${theme.colors.secondary};
     cursor: pointer;
-    font-size: ${theme.fontSizes.medium};
+    font-size: 2em;
     height: 52px;
     width: 52px;
     vertical-align: text-top;

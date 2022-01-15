@@ -7,9 +7,9 @@ export const ThemeButton = styled.button`
     border-radius: 100px;
     outline: none;
     background: ${theme.colors.primary};
-    color: ${theme.colors.light};
+    color: ${theme.colors.bg};
     cursor: pointer;
-    font-size: ${theme.fontSizes.medium};
+    font-size: 2em;
     height: 52px;
     width: 52px;
     vertical-align: text-top;

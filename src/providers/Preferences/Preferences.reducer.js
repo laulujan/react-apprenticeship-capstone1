@@ -9,12 +9,14 @@ export const initialState = {
 export function PreferencesReducer(state, action) {
   const { type } = action;
 
+  let isDarkThemeOn = !state.isDarkThemeOn;
+
   switch (type) {
-    case ACTIONS.TOGGLE20_THEME:
+    case ACTIONS.TOGGLE_THEME:
       return {
         ...state,
-        isDark0ThemeOn: !state.isDark2ThemeOn,
-        theme: state.isDarkThemeOn ? darkTheme : lightTheme,
+        isDarkThemeOn: isDarkThemeOn,
+        theme: isDarkThemeOn ? darkTheme : lightTheme,
       };
     default:
       throw new Error(`Invalid action "${type}"`);

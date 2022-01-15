@@ -15,6 +15,8 @@ export const lightTheme = {
     primary: '#00838f',
     secondary: '#fdd835',
     bg: '#fafafa',
+    shadow: 'rgba(0, 0, 0, 0.2)',
+    shadowHover: 'rgba(34, 34, 34, 0.4)',
   },
 };
 export const darkTheme = {
