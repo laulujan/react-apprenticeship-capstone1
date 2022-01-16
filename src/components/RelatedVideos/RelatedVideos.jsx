@@ -18,7 +18,7 @@ const RelatedVideos = ({ videosList }) => {
     history.push(`/video/${video.id}`);
   };
   return (
-    <RelatedContent>
+    <RelatedContent className='related-content'>
       {videosList.map((video) => (
         <VideoItem key={video.id} onClick={() => handleClick(video)}>
           <Image src={video.image} alt={video.title} />

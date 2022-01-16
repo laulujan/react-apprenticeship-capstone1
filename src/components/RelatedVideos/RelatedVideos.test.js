@@ -7,7 +7,7 @@ import VideoProvider from '../../providers/Video/Video.provider';
 describe('<RelatedVideos />', () => {
   const mock = require('../../__mocks__/mockYouTubeAPI');
 
-  test.only('Render Video image', async () => {
+  test('Render Video image', async () => {
     await act(async () => {
       render(
         <VideoProvider>

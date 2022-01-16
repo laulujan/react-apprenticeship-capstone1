@@ -45,4 +45,32 @@ function mountThemeProvider() {
   };
 }
 
-export { mount, mountComponentWithRouter, mountThemeProvider };
+function mountThemeAndVideoProvider(
+  video = {},
+  videos = [],
+  relatedVideos = []
+) {
+  const mock = require('./mockTheme');
+
+  return {
+    wrapper: ({ children }) => (
+      <VideoProvider
+        video={video}
+        videos={videos}
+        relatedVideos={relatedVideos}
+        fetchRelatedVideos={mock.getMockedTheme}
+      >
+        <PreferencesProvider theme={mock.getMockedTheme}>
+          <ThemeProvider theme={mock.getMockedTheme}>{children}</ThemeProvider>
+        </PreferencesProvider>
+      </VideoProvider>
+    ),
+  };
+}
+
+export {
+  mount,
+  mountComponentWithRouter,
+  mountThemeProvider,
+  mountThemeAndVideoProvider,
+};

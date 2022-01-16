@@ -10,8 +10,6 @@ const LoginMenu = () => {
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
-      // If the menu is open and the clicked target is not within the menu,
-      // then close the menu
       if (isDropDownOpen && ref.current && !ref.current.contains(e.target)) {
         setIsDropDownOpen(false);
       }
@@ -20,7 +18,6 @@ const LoginMenu = () => {
     document.addEventListener('mousedown', checkIfClickedOutside);
 
     return () => {
-      // Cleanup the event listener
       document.removeEventListener('mousedown', checkIfClickedOutside);
     };
   }, [isDropDownOpen]);
