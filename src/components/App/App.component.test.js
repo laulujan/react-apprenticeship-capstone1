@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render, waitFor, act, screen } from '@testing-library/react';
 import App from './App.component';
 
 jest.mock('../../api/gapi', () => {
@@ -11,7 +11,6 @@ jest.mock('../../api/gapi', () => {
     },
   };
 });
-
 jest.mock('../../api/youtubeAPI.js', () => {
   const mock = require('../../__mocks__/mockYouTubeAPI');
   return { getVideos: mock.getVideos };
@@ -26,9 +25,9 @@ test('Render Navbar', async () => {
 });
 
 test('Render card container', async () => {
-  const { container } = render(<App />);
-
-  await waitFor(() => {
-    expect(container.getElementsByClassName('card-container').length).toBe(1);
+  await act(async () => {
+    render(<App />);
   });
+
+  expect(await screen.findByAltText('Wizeline')).toBeInTheDocument();
 });

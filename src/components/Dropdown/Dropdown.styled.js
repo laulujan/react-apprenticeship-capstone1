@@ -8,7 +8,7 @@ export const MyDropdown = styled.div.attrs((props) => ({
     background-color: ${theme.body};
     min-width: 160px;
     border-radius: 5px;
-    box-shadow: 0px 8px 16px 0px ${theme.colors.shadow};
+    border: 1px solid gray;
     z-index: 1;
   `}
 `;

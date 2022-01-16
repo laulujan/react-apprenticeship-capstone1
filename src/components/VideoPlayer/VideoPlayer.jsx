@@ -18,7 +18,7 @@ const VideoPlayer = ({ video }) => {
   };
 
   return (
-    <VideoContainer>
+    <VideoContainer data-testid="video-player-container">
       <iframe
         width="100%"
         height="534px"

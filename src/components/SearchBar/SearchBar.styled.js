@@ -9,9 +9,6 @@ const Input = styled.input`
     background: ${theme.body};
     border: none;
     border-radius: 20px;
-    ::placeholder {
-      color: ${theme.colors.text};
-    }
   `}
 `;
 

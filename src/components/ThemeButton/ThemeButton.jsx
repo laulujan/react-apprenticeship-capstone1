@@ -6,12 +6,12 @@ const ToggleTheme = () => {
   const { isDarkThemeOn, toggleTheme } = usePreferences();
 
   return (
-    <div>
+    <div data-testid="theme-button">
       <ThemeButton onClick={toggleTheme}>
         {isDarkThemeOn ? (
-          <LightIcon alt="light theme" />
+          <LightIcon title="light_theme" />
         ) : (
-          <DarkIcon alt="dark theme" />
+          <DarkIcon title="dark_theme" />
         )}
       </ThemeButton>
     </div>

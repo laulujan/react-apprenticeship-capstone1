@@ -2,31 +2,37 @@ const getVideos = () => {
   return [
     {
       kind: 'youtube#searchResult',
-      etag: '_PVKwNJf_qw9nukFeRFOtQ837o0',
+      etag: 'hhesYkmBJ6ItQxio6ikS4g2XPTc',
       id: {
-        kind: 'youtube#channel',
-        channelId: 'UCPGzT4wecuWM0BH9mPiulXg',
+        kind: 'youtube#video',
+        videoId: 'HYyRZiwBWc8',
       },
       snippet: {
-        publishedAt: '2014-09-27T01:39:18Z',
+        publishedAt: '2019-04-18T18:48:04Z',
         channelId: 'UCPGzT4wecuWM0BH9mPiulXg',
         title: 'Wizeline',
         description:
-          "Wizeline transforms how teams build technology. Its customers accelerate the delivery of innovative products with proven solutions, which combine Wizeline's ...",
+          'Wizeline continues to offer a Silicon Valley culture in burgeoning innovation hubs like Mexico and Vietnam. In 2018, our ...',
         thumbnails: {
           default: {
-            url: 'https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s88-c-k-c0xffffffff-no-rj-mo',
+            url: 'https://i.ytimg.com/vi/HYyRZiwBWc8/default.jpg',
+            width: 120,
+            height: 90,
           },
           medium: {
-            url: 'https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s240-c-k-c0xffffffff-no-rj-mo',
+            url: 'https://i.ytimg.com/vi/HYyRZiwBWc8/mqdefault.jpg',
+            width: 320,
+            height: 180,
           },
           high: {
-            url: 'https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s800-c-k-c0xffffffff-no-rj-mo',
+            url: 'https://i.ytimg.com/vi/HYyRZiwBWc8/hqdefault.jpg',
+            width: 480,
+            height: 360,
           },
         },
         channelTitle: 'Wizeline',
-        liveBroadcastContent: 'upcoming',
-        publishTime: '2014-09-27T01:39:18Z',
+        liveBroadcastContent: 'none',
+        publishTime: '2019-04-18T18:48:04Z',
       },
     },
   ];
