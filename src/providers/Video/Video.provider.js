@@ -5,10 +5,11 @@ import {
   setSearchItem,
   setCurrentVideo,
   fetchRelatedVideos,
+  addFavorite,
+  removeFavorite,
 } from './Video.actions';
 import { videoReducer, initialState } from './Video.reducer';
-
-const VideoContext = createContext(null);
+import { VideoContext } from './Video.context';
 
 function useVideo() {
   const context = useContext(VideoContext);
@@ -21,6 +22,9 @@ function useVideo() {
 const VideoProvider = ({ children }) => {
   const [state, dispatch] = useReducer(videoReducer, initialState);
 
+  function isFavorite(video) {
+    return state.favorites.find((favorite) => favorite.id === video.id);
+  }
   const value = {
     loading: state.loading,
     error: state.error,
@@ -32,6 +36,10 @@ const VideoProvider = ({ children }) => {
     fetchRelatedVideos: fetchRelatedVideos(dispatch),
     setSearchItem: setSearchItem(dispatch),
     setCurrentVideo: setCurrentVideo(dispatch),
+    favorites: state.favorites,
+    isFavorite,
+    addFavorite: addFavorite(dispatch),
+    removeFavorite: removeFavorite(dispatch),
   };
 
   return (

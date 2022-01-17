@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import VideoProvider from '../../providers/Video/Video.provider';
 import PreferencesProvider from '../../providers/Preferences/Preferences.provider';
+import AuthProvider from '../../providers/Auth/Auth.provider';
 import ThemedApp from '../ThemedApp/ThemedApp';
 
 import { initGoogle } from '../../api/gapi';
@@ -23,11 +24,13 @@ function App() {
   return (
     <div>
       {loadDependencies ? (
-        <VideoProvider>
-          <PreferencesProvider>
-            <ThemedApp />
-          </PreferencesProvider>
-        </VideoProvider>
+        <AuthProvider>
+          <VideoProvider>
+            <PreferencesProvider>
+              <ThemedApp />
+            </PreferencesProvider>
+          </VideoProvider>
+        </AuthProvider>
       ) : (
         <div>Loading</div>
       )}

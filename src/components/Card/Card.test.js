@@ -1,17 +1,18 @@
 import React from 'react';
-import { screen, act } from '@testing-library/react';
+import { screen, act, render } from '@testing-library/react';
 import Card from './Card';
-import { mount } from '../../__mocks__/MountComponent';
+import { mountAllProviders } from '../../__mocks__/MountComponent';
 
 jest.mock('../../api/youtubeAPI.js', () => {
   const mock = require('../../__mocks__/mockYouTubeAPI');
   return { getVideos: mock.getVideos };
 });
 describe('<Card />', () => {
+  let videoMock = { image: 'test', title: 'My Test Title' };
   test('Render card image', async () => {
     await act(async () => {
-      mount(<Card />);
+      render(<Card video={videoMock} />, mountAllProviders());
     });
-    expect(await screen.findByAltText('Wizeline')).toBeInTheDocument();
+    expect(await screen.findByAltText(videoMock.title)).toBeInTheDocument();
   });
 });

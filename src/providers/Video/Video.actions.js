@@ -9,6 +9,8 @@ const ACTIONS = {
   FETCH_RELATED_ERROR: 'FETCH_RELATED_ERROR',
   SET_SEARCH_ITEM: 'SET_SEARCH_ITEM',
   SET_CURRENT_VIDEO: 'SET_CURRENT_VIDEO',
+  ADD_FAVORITE: 'ADD_FAVORITE',
+  REMOVE_FAVORITE: 'REMOVE_FAVORITE',
 };
 
 function dataFormat(videoData) {
@@ -77,10 +79,20 @@ const setCurrentVideo = (dispatch) => (video) => {
   dispatch({ type: ACTIONS.SET_CURRENT_VIDEO, payload: { video } });
 };
 
+const addFavorite = (dispatch) => (video) => {
+  dispatch({ type: ACTIONS.ADD_FAVORITE, payload: { video } });
+};
+
+const removeFavorite = (dispatch) => (video) => {
+  dispatch({ type: ACTIONS.REMOVE_FAVORITE, payload: { video } });
+};
+
 export {
   ACTIONS,
   fetchVideos,
   fetchRelatedVideos,
   setSearchItem,
   setCurrentVideo,
+  addFavorite,
+  removeFavorite,
 };

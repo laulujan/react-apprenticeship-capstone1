@@ -1,7 +1,7 @@
 import React from 'react';
-import { fireEvent, screen, act } from '@testing-library/react';
+import { fireEvent, screen, act, render } from '@testing-library/react';
 import LoginMenu from './LoginMenu';
-import { mount } from '../../__mocks__/MountComponent';
+import { mountAllProviders } from '../../__mocks__/MountComponent';
 
 jest.mock('../../api/youtubeAPI.js', () => {
   const mock = require('../../__mocks__/mockYouTubeAPI');
@@ -11,9 +11,10 @@ jest.mock('../../api/youtubeAPI.js', () => {
 describe('<LoginMenu />', () => {
   test('Open dropdown on click event', async () => {
     await act(async () => {
-      mount(<LoginMenu />);
+      render(<LoginMenu />, mountAllProviders());
     });
-    const btn = screen.getAllByRole('button')[2];
+
+    const btn = screen.getByRole('button');
     fireEvent.click(btn);
     expect(screen.getByText('Login')).toBeInTheDocument();
   });

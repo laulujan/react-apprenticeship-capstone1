@@ -8,14 +8,14 @@ import {
 } from './RelatedVideos.styled';
 import { useVideo } from '../../providers/Video/Video.provider';
 
-const RelatedVideos = ({ videosList }) => {
+const RelatedVideos = ({ videosList, setPath }) => {
   const { setCurrentVideo, fetchRelatedVideos } = useVideo();
   const history = useHistory();
 
   const handleClick = (video) => {
     setCurrentVideo(video);
     fetchRelatedVideos(video.id);
-    history.push(`/video/${video.id}`);
+    history.push(setPath(video));
   };
   return (
     <RelatedContent className="related-content">

@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Button, MenuIcon } from './Menu.styled.js';
 import Dropdown from '../Dropdown/Dropdown';
+import { useAuth } from '../../providers/Auth/Auth.provider';
 
 const Menu = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-  const [isLogged, setIsLogged] = useState(true);
+  const { isLoggedIn } = useAuth();
   const ref = useRef();
 
   useEffect(() => {
@@ -30,9 +31,8 @@ const Menu = () => {
 
   const list = () => {
     let dropdownList = [{ label: 'Home', path: '/' }];
-    if (isLogged === true) {
+    if (isLoggedIn === true) {
       dropdownList.push({ label: 'Favorites', path: '/favorites' });
-      setIsLogged(true);
     }
 
     return dropdownList;

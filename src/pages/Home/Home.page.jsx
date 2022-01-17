@@ -6,7 +6,13 @@ import { useVideo } from '../../providers/Video/Video.provider';
 function HomePage() {
   const { videos } = useVideo();
   return (
-    <>{videos ? <CardWrapper videos={videos} /> : <div>No videos found</div>}</>
+    <>
+      {videos ? (
+        <CardWrapper videos={videos} isFavorites={false} />
+      ) : (
+        <div>No videos found</div>
+      )}
+    </>
   );
 }
 

@@ -9,13 +9,19 @@ import {
 } from './Card.styled';
 import { useVideo } from '../../providers/Video/Video.provider';
 
-const Card = ({ video }) => {
+const Card = ({ video, isFavorites }) => {
   const history = useHistory();
   const { setCurrentVideo } = useVideo();
 
   const handleClick = () => {
     setCurrentVideo(video);
-    history.push(`/video/${video.id}`);
+
+    let location = `/video/${video.id}`;
+    if (isFavorites) {
+      location = `/favorites/${video.id}`;
+    }
+
+    history.push(location);
   };
   return (
     <MyCard className="card" onClick={handleClick}>
