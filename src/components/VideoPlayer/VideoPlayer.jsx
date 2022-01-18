@@ -38,11 +38,11 @@ const VideoPlayer = ({ video }) => {
           <VideoTitle>{video.title}</VideoTitle>
           {isLoggedIn &&
             (isFavorite(video) ? (
-              <FavoriteButton onClick={RemoveVideo}>
+              <FavoriteButton onClick={RemoveVideo} title="is favorite">
                 <FavIcon />
               </FavoriteButton>
             ) : (
-              <FavoriteButton onClick={AddVideo}>
+              <FavoriteButton onClick={AddVideo} title="is not favorite">
                 <UnFavIcon />
               </FavoriteButton>
             ))}

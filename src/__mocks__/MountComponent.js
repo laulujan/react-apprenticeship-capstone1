@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout.component';
 import VideoProvider from '../providers/Video/Video.provider';
 import PreferencesProvider from '../providers/Preferences/Preferences.provider';
 import ThemedApp from '../components/ThemedApp/ThemedApp';
@@ -80,7 +80,7 @@ function mountAllProviders(authprops = {}, videoProps = {}, themeProps = null) {
     wrapper: ({ children }) => (
       <AuthContext.Provider value={authprops}>
         <VideoContext.Provider value={videoProps}>
-          <PreferencesProvider theme={themeProps}>
+          <PreferencesProvider theme={themeProps} isDarkThemeOn={false}>
             <ThemeProvider theme={themeProps}>{children}</ThemeProvider>
           </PreferencesProvider>
         </VideoContext.Provider>

@@ -1,6 +1,13 @@
 import React from 'react';
 import Favorites from './Favorites';
-import { screen, act, render } from '@testing-library/react';
+import {
+  screen,
+  act,
+  render,
+  fireEvent,
+  waitFor,
+} from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { mountAllProviders } from '../../__mocks__/MountComponent';
 
@@ -8,16 +15,6 @@ jest.mock('../../api/youtubeAPI.js', () => {
   const mock = require('../../__mocks__/mockYouTubeAPI');
   return { getVideos: mock.getVideos };
 });
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useLocation: () => ({
-    pathname: 'localhost:3000/',
-  }),
-  useHistory: () => ({
-    push: jest.fn(),
-  }),
-}));
 
 describe('<Favorites />', () => {
   const mock = require('../../__mocks__/mockYouTubeAPI');
@@ -47,7 +44,6 @@ describe('<Favorites />', () => {
     video: {},
     favorites: [],
     fetchVideos: mock.getVideos,
-    setSearchItem: jest.fn(),
   };
 
   test('Display no favorite videos when favorites list is empty ', async () => {
@@ -59,5 +55,43 @@ describe('<Favorites />', () => {
     });
 
     expect(screen.getByText('No Favorite videos Found')).toBeInTheDocument();
+  });
+});
+
+describe('<Favorites with elements/>', () => {
+  const mock = require('../../__mocks__/mockYouTubeAPI');
+
+  let videoProps = {
+    video: {},
+    favorites: [
+      { id: 'test', title: 'test', image: 'test', description: 'test' },
+    ],
+    fetchVideos: mock.getVideos,
+    setSearchItem: jest.fn(),
+    setCurrentVideo: jest.fn(),
+  };
+
+  test('Display cards ', async () => {
+    await act(async () => {
+      render(<Favorites />, mountAllProviders({ isLogedIn: true }, videoProps));
+    });
+
+    expect(screen.getByAltText('test')).toBeInTheDocument();
+  });
+  test('Redirects to video page on click', async () => {
+    await act(async () => {
+      render(
+        <MemoryRouter initialEntries={[`/favorites`]}>
+          <Favorites />
+        </MemoryRouter>,
+        mountAllProviders({ isLogedIn: true }, videoProps)
+      );
+    });
+    const card = screen.getByAltText('test');
+    act(() => {
+      /* fire events that update state */
+      fireEvent.click(card);
+    });
+    waitFor(() => expect(location.pathname).toBe('/favorites/test'));
   });
 });

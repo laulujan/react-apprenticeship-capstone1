@@ -7,10 +7,20 @@ jest.mock('./youtubeAPI', () => ({
     return mock.getVideos();
   },
 }));
-describe('<RelatedVideos />', () => {
-  test('Render Video image', async () => {
+describe('Fetch videos', () => {
+  test('return array ', async () => {
     const res = await fetchVideos('test');
 
     expect(res.length).toBeGreaterThan(0);
+  });
+
+  test('error ', async () => {
+    try {
+      await fetchVideos();
+    } catch (e) {
+      expect(e).toEqual({
+        error: 'Username or password invalid',
+      });
+    }
   });
 });

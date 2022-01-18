@@ -26,4 +26,11 @@ describe('<ThemeButton />', () => {
 
     expect(screen.getByTitle('dark_theme')).toBeInTheDocument();
   });
+  test('Shows light theme on initial render', async () => {
+    await act(async () => {
+      render(<ThemeButton />, mountAllProviders());
+    });
+
+    expect(screen.getByTitle('dark_theme')).toBeInTheDocument();
+  });
 });

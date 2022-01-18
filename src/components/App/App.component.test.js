@@ -61,4 +61,42 @@ describe('App', () => {
       document.getElementsByClassName('related-content')[0]
     ).toBeInTheDocument();
   });
+  test('Open Login dropdown on click ', async () => {
+    await act(async () => {
+      render(<App />);
+    });
+    const btn = screen.getByAltText('avatar');
+    fireEvent.click(btn);
+    expect(screen.getByText('Login')).toBeInTheDocument();
+  });
+  test('Close login dropdown on click outside ', async () => {
+    await act(async () => {
+      render(<App />);
+    });
+    const btn = screen.getByAltText('avatar');
+    fireEvent.click(btn);
+    const nav = screen.getByRole('navigation');
+    fireEvent.mouseDown(nav);
+
+    expect(screen.queryByRole('list')).not.toBeInTheDocument();
+  });
+  test('Open Menu dropdown on click ', async () => {
+    await act(async () => {
+      render(<App />);
+    });
+    const btn = screen.getByTitle('Menu');
+    fireEvent.click(btn);
+    expect(screen.getByText('Home')).toBeInTheDocument();
+  });
+  test('Close Menu dropdown on click outside ', async () => {
+    await act(async () => {
+      render(<App />);
+    });
+    const btn = screen.getByTitle('Menu');
+    fireEvent.click(btn);
+    const nav = screen.getByRole('navigation');
+    fireEvent.mouseDown(nav);
+
+    expect(screen.queryByRole('list')).not.toBeInTheDocument();
+  });
 });

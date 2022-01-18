@@ -10,16 +10,6 @@ jest.mock('../../api/youtubeAPI.js', () => {
   return { getVideos: mock.getVideos };
 });
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useLocation: () => ({
-    pathname: '/',
-  }),
-  useHistory: () => ({
-    push: jest.fn(),
-  }),
-}));
-
 describe('<VideoDetails/>', () => {
   const mock = require('../../__mocks__/mockYouTubeAPI');
 
@@ -27,9 +17,23 @@ describe('<VideoDetails/>', () => {
     video: {},
     favorites: [{ id: '1', title: 'test', image: 'test', description: 'test' }],
     fetchRelatedVideos: mock.getVideos,
-    relatedVideos: [],
+    relatedVideos: [
+      { id: '2', title: 'test2', image: 'test2', description: 'test2' },
+    ],
   };
-  test('Renders  ', async () => {
+  test('Renders from favorites when user is loged in ', async () => {
+    await act(async () => {
+      render(
+        <MemoryRouter initialEntries={[`/favorites`]}>
+          <VideoDetails />
+        </MemoryRouter>,
+        mountAllProviders({ isLogedIn: true }, videoProps)
+      );
+    });
+
+    expect(screen.getByAltText('test')).toBeInTheDocument();
+  });
+  test('Renders videos when user is loged out ', async () => {
     await act(async () => {
       render(
         <MemoryRouter initialEntries={[`/video`]}>
@@ -38,8 +42,6 @@ describe('<VideoDetails/>', () => {
         mountAllProviders({ isLogedIn: false }, videoProps)
       );
     });
-
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getByAltText('test2')).toBeInTheDocument();
   });
 });
-//fix this test

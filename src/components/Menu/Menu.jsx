@@ -39,7 +39,7 @@ const Menu = () => {
   };
   return (
     <div ref={ref}>
-      <Button onClick={handleClick}>
+      <Button onClick={handleClick} title="Menu">
         <MenuIcon />
       </Button>
       {isDropDownOpen && <Dropdown list={list} onSelect={onSelect} />}

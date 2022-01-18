@@ -7,7 +7,7 @@ import NotFound from '../../pages/NotFound';
 import Private from '../Private/Private';
 import Favorites from '../../pages/Favorites/Favorites';
 import VideoDetails from '../../pages/VideoDetails/VideoDetails';
-import Layout from '../Layout';
+import Layout from '../Layout/Layout.component';
 
 function Router() {
   return (
