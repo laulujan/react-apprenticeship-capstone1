@@ -93,5 +93,5 @@ export {
   mountComponentWithRouter,
   mountThemeProvider,
   mountThemeAndVideoProvider,
-  mountAllProviders
+  mountAllProviders,
 };

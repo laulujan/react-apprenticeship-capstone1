@@ -10,7 +10,7 @@ jest.mock('../../api/youtubeAPI.js', () => {
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: () => ({
-    pathname: 'localhost:3000/example/path',
+    pathname: 'localhost:3000/',
   }),
   useHistory: () => ({
     push: jest.fn(),
@@ -18,10 +18,9 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('Search component', () => {
-  const mock = require('../../__mocks__/mockYouTubeAPI');
   let videoProps = {
     video: {},
-    fetchVideos: mock.getVideos,
+    fetchVideos: jest.fn(),
     setSearchItem: jest.fn(),
   };
 
@@ -44,5 +43,16 @@ describe('Search component', () => {
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'wizeline' } });
     expect(input.value).toMatch('wizeline');
+  });
+  test('Fetch videos on enter', async () => {
+    await act(async () => {
+      render(<SearchBar />, mountAllProviders(authProps, videoProps));
+    });
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: 'wizeline' } });
+    input.focus();
+    fireEvent.keyDown(document.activeElement || document.body);
+
+    expect(videoProps.fetchVideos).toHaveBeenCalled();
   });
 });

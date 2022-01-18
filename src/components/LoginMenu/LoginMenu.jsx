@@ -44,7 +44,7 @@ const LoginMenu = () => {
     <div ref={ref}>
       <LoginMenuButton onClick={handleClick}>
         <Avatar
-          alt="avatar"
+          alt={user?.name || 'avatar'}
           src={
             user?.avatarUrl ||
             'https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png'
