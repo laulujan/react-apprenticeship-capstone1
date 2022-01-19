@@ -7,7 +7,7 @@ import {
   Button,
   CancelButton,
 } from './Login.styled';
-import { useAuth } from '../../providers/Auth/Auth.provider';
+import { useAuth } from '../../providers/Auth/provider';
 
 const Login = () => {
   const history = useHistory();

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { LoginMenuButton, Avatar } from './LoginMenu.styled';
 import Dropdown from '../Dropdown/Dropdown';
-import { useAuth } from '../../providers/Auth/Auth.provider';
+import { useAuth } from '../../providers/Auth/provider';
 
 const LoginMenu = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);

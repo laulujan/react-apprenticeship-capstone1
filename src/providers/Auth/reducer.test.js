@@ -1,5 +1,5 @@
-import { authReducer } from './Auth.reducer';
-import { ACTIONS } from './Auth.actions';
+import { authReducer } from './reducer';
+import { ACTIONS } from './actions';
 
 const { LOGIN, LOGOUT, LOGGED, ERROR } = ACTIONS;
 

@@ -1,8 +1,8 @@
 import React, { useReducer, useContext } from 'react';
 
-import { loginUser, logoutUser } from './Auth.actions';
-import { authReducer, initialState } from './Auth.reducer';
-import { AuthContext } from './Auth.context';
+import { loginUser, logoutUser } from './actions';
+import { authReducer, initialState } from './reducer';
+import { AuthContext } from './context';
 
 function useAuth() {
   const context = useContext(AuthContext);

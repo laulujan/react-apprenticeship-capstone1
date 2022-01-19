@@ -23,7 +23,7 @@ jest.mock('react-router-dom', () => ({
   }),
 }));
 
-describe('Search component', () => {
+describe('<SearchBar />', () => {
   let videoProps = {
     video: {},
     fetchVideos: jest.fn(),

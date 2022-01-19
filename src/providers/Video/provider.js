@@ -1,5 +1,7 @@
-import React, { useReducer, createContext, useContext } from 'react';
-
+import React, { useReducer, useContext, useEffect } from 'react';
+import { storage } from '../../utils/storage';
+import { VIDEO_STORAGE_KEY } from '../../utils/constants';
+import { useAuth } from '../Auth/provider';
 import {
   fetchVideos,
   setSearchItem,
@@ -7,9 +9,9 @@ import {
   fetchRelatedVideos,
   addFavorite,
   removeFavorite,
-} from './Video.actions';
-import { videoReducer, initialState } from './Video.reducer';
-import { VideoContext } from './Video.context';
+} from './actions';
+import { videoReducer, initialState } from './reducer';
+import { VideoContext } from './context';
 
 function useVideo() {
   const context = useContext(VideoContext);
@@ -19,12 +21,38 @@ function useVideo() {
   return context;
 }
 
+function getUserStorageKey(user) {
+  return user ? `${VIDEO_STORAGE_KEY}-${user.id}` : '';
+}
+const retriveStorage = (user) => (state) => {
+  const userStorageKey = getUserStorageKey(user);
+  const storageObject = storage.get(userStorageKey);
+
+  return {
+    ...state,
+    ...storageObject,
+  };
+};
+
 const VideoProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(videoReducer, initialState);
+  const { user } = useAuth();
+  const [state, dispatch] = useReducer(
+    videoReducer,
+    initialState,
+    retriveStorage(user)
+  );
 
   function isFavorite(video) {
     return state.favorites.find((favorite) => favorite.id === video.id);
   }
+  useEffect(() => {
+    const userStorageKey = getUserStorageKey(user);
+
+    storage.set(userStorageKey, {
+      favorites: state.favorites,
+    });
+  }, [user, state.favorites]);
+
   const value = {
     loading: state.loading,
     error: state.error,

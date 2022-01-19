@@ -6,7 +6,7 @@ import {
   screen,
   fireEvent,
 } from '@testing-library/react';
-import App from './App.component';
+import App from './App';
 
 jest.mock('../../api/gapi', () => {
   return {

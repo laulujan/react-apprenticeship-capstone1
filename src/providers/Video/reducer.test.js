@@ -1,5 +1,5 @@
-import { videoReducer } from './Video.reducer';
-import { ACTIONS } from './Video.actions';
+import { videoReducer } from './reducer';
+import { ACTIONS } from './actions';
 import { waitFor } from '@testing-library/react';
 
 const {

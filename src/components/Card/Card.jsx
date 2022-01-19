@@ -7,7 +7,7 @@ import {
   CardImage,
   CardContent,
 } from './Card.styled';
-import { useVideo } from '../../providers/Video/Video.provider';
+import { useVideo } from '../../providers/Video/provider';
 
 const Card = ({ video, isFavorites }) => {
   const history = useHistory();

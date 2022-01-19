@@ -1,6 +1,6 @@
 import React from 'react';
 import CardWrapper from '../../components/CardWrapper/CardWrapper';
-import { useVideo } from '../../providers/Video/Video.provider';
+import { useVideo } from '../../providers/Video/provider';
 import { Box } from './Favorites.styled';
 
 const Favorites = () => {

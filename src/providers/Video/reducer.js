@@ -1,4 +1,4 @@
-import { ACTIONS } from './Video.actions';
+import { ACTIONS } from './actions';
 
 export const initialState = {
   loading: false,

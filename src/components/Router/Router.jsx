@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
-import HomePage from '../../pages/Home/Home.page';
+import HomePage from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
-import NotFound from '../../pages/NotFound';
+import NotFound from '../../pages/NotFound/NotFound';
 import Private from '../Private/Private';
 import Favorites from '../../pages/Favorites/Favorites';
 import VideoDetails from '../../pages/VideoDetails/VideoDetails';
-import Layout from '../Layout/Layout.component';
+import Layout from '../Layout/Layout';
 
 function Router() {
   return (

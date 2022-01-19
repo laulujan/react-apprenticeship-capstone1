@@ -9,8 +9,8 @@ import {
   FavIcon,
   UnFavIcon,
 } from './VideoPlayer.styled';
-import { useAuth } from '../../providers/Auth/Auth.provider';
-import { useVideo } from '../../providers/Video/Video.provider';
+import { useAuth } from '../../providers/Auth/provider';
+import { useVideo } from '../../providers/Video/provider';
 
 const VideoPlayer = ({ video }) => {
   const { isFavorite, addFavorite, removeFavorite } = useVideo();

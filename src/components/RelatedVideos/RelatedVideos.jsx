@@ -6,7 +6,7 @@ import {
   Image,
   Title,
 } from './RelatedVideos.styled';
-import { useVideo } from '../../providers/Video/Video.provider';
+import { useVideo } from '../../providers/Video/provider';
 
 const RelatedVideos = ({ videosList, setPath }) => {
   const { setCurrentVideo, fetchRelatedVideos } = useVideo();

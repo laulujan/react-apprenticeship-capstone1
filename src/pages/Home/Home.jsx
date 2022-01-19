@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CardWrapper from '../../components/CardWrapper/CardWrapper';
-import { useVideo } from '../../providers/Video/Video.provider';
+import { useVideo } from '../../providers/Video/provider';
 
 function HomePage() {
   const { videos } = useVideo();

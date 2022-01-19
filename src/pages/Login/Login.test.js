@@ -62,7 +62,6 @@ describe('<Login />', () => {
     fireEvent.change(user, { target: { value: 'wizeline' } });
     fireEvent.change(password, { target: { value: 'Rocks!' } });
     await act(async () => {
-      /* fire events that update state */
       fireEvent.click(loginBtn);
     });
 

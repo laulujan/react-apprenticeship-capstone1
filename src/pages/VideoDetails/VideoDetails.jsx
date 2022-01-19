@@ -3,7 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import RelatedVideos from '../../components/RelatedVideos/RelatedVideos';
 import { Container } from './VideoDetails.styled';
-import { useVideo } from '../../providers/Video/Video.provider';
+import { useVideo } from '../../providers/Video/provider';
 
 const setPath =
   (location) =>

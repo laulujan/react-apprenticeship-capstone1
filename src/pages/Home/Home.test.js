@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePage from './Home.page';
+import HomePage from './Home';
 import { screen, act, render } from '@testing-library/react';
 
 import { mountAllProviders } from '../../__mocks__/MountComponent';

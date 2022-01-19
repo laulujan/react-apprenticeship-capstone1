@@ -1,5 +1,5 @@
-import { PreferencesReducer } from './Preferences.reducer';
-import { ACTIONS } from './Preferences.actions';
+import { PreferencesReducer } from './reducer';
+import { ACTIONS } from './actions';
 import { lightTheme, darkTheme } from '../../components/Layout/theme';
 
 const { TOGGLE_THEME } = ACTIONS;
