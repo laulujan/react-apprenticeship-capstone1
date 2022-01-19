@@ -1,33 +1,25 @@
 import React from 'react';
-import { Router, Route, MemoryRouter } from 'react-router-dom';
-import { render } from '@testing-library/react';
-import Layout from '../components/Layout';
-import VideoProvider from '../providers/Video/Video.provider';
-import { mock } from './mockYouTubeAPI';
+import PreferencesProvider from '../providers/Preferences/provider';
 import { ThemeProvider } from 'styled-components';
-import theme from '../components/Layout/theme';
+import { AuthContext } from '../providers/Auth/context';
+import { VideoContext } from '../providers/Video/context';
 
-function mount(component, path = '/') {
-  return render(
-    <VideoProvider>
-      <ThemeProvider theme={theme}>
-        <MemoryRouter initialEntries={[path]}>{component}</MemoryRouter>
-      </ThemeProvider>
-    </VideoProvider>
-  );
+function mountAllProviders(authprops = {}, videoProps = {}, themeProps = null) {
+  if (themeProps === null) {
+    const mock = require('./mockTheme');
+    themeProps = mock.getMockedTheme;
+  }
+
+  return {
+    wrapper: ({ children }) => (
+      <AuthContext.Provider value={authprops}>
+        <VideoContext.Provider value={videoProps}>
+          <PreferencesProvider theme={themeProps} isDarkThemeOn={false}>
+            <ThemeProvider theme={themeProps}>{children}</ThemeProvider>
+          </PreferencesProvider>
+        </VideoContext.Provider>
+      </AuthContext.Provider>
+    ),
+  };
 }
-
-function mountComponentWithRouter(component, history, path) {
-  mock();
-  return render(
-    <VideoProvider>
-      <Layout>
-        <Router history={history}>
-          <Route path={path}>{component}</Route>
-        </Router>
-      </Layout>
-    </VideoProvider>
-  );
-}
-
-export { mount, mountComponentWithRouter };
+export { mountAllProviders };

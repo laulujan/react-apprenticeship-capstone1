@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const RelatedContent = styled.div`
   width: 30%;
@@ -10,15 +10,17 @@ export const RelatedContent = styled.div`
 `;
 
 export const VideoItem = styled.div`
-  width: 100%;
-  border-bottom: 1px solid gray;
-  display: flex;
-  padding: 10px;
-  cursor: pointer;
-  align-items: center;
-  &:hover {
-    box-shadow: 6px 6px 14px -11px rgba(34, 34, 34, 0.4);
-  }
+  ${({ theme }) => css`
+    width: 100%;
+    border-bottom: 1px solid gray;
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    align-items: center;
+    &:hover {
+      box-shadow: 6px 6px 14px -11px ${theme.colors.shadowHover};
+    }
+  `}
 `;
 
 export const Image = styled.img`

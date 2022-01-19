@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   VideoContainer,
   VideoContent,
@@ -9,16 +9,23 @@ import {
   FavIcon,
   UnFavIcon,
 } from './VideoPlayer.styled';
+import { useAuth } from '../../providers/Auth/provider';
+import { useVideo } from '../../providers/Video/provider';
 
 const VideoPlayer = ({ video }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { isFavorite, addFavorite, removeFavorite } = useVideo();
+  const { isLoggedIn } = useAuth();
 
-  const handleClick = () => {
-    setIsFavorite(!isFavorite);
+  const AddVideo = () => {
+    addFavorite(video);
+  };
+
+  const RemoveVideo = () => {
+    removeFavorite(video);
   };
 
   return (
-    <VideoContainer>
+    <VideoContainer data-testid="video-player-container">
       <iframe
         width="100%"
         height="534px"
@@ -29,9 +36,16 @@ const VideoPlayer = ({ video }) => {
       <VideoContent>
         <VideoBox>
           <VideoTitle>{video.title}</VideoTitle>
-          <FavoriteButton onClick={handleClick}>
-            {isFavorite ? <FavIcon /> : <UnFavIcon />}
-          </FavoriteButton>
+          {isLoggedIn &&
+            (isFavorite(video) ? (
+              <FavoriteButton onClick={RemoveVideo} title="is favorite">
+                <FavIcon />
+              </FavoriteButton>
+            ) : (
+              <FavoriteButton onClick={AddVideo} title="is not favorite">
+                <UnFavIcon />
+              </FavoriteButton>
+            ))}
         </VideoBox>
         <VideoDescription>{video.description}</VideoDescription>
       </VideoContent>

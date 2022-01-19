@@ -9,7 +9,7 @@ export const LoginMenuButton = styled.button`
     background: ${theme.colors.primary};
     color: white;
     cursor: pointer;
-    font-size: ${theme.fontSizes.medium};
+    font-size: 2em;
     height: 52px;
     width: 52px;
     &:hover {

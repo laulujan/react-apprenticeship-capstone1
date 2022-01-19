@@ -3,11 +3,14 @@ import styled, { css } from 'styled-components';
 export const MyDropdown = styled.div.attrs((props) => ({
   className: props.className,
 }))`
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  ${({ theme }) => css`
+    position: absolute;
+    background-color: ${theme.body};
+    min-width: 160px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    z-index: 1;
+  `}
 `;
 
 export const List = styled.ul`

@@ -6,6 +6,6 @@ export const fetchVideos = async (searchQuery) => {
     const videos = result.filter((video) => video.id.kind === 'youtube#video');
     return videos;
   } catch (error) {
-    console.error;
+    console.error(error);
   }
 };

@@ -2,13 +2,15 @@ import styled, { css } from 'styled-components';
 import { Image } from 'rebass';
 
 export const MyCard = styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+${({ theme }) => css`
+  box-shadow: 0 4px 8px 0 ${theme.colors.shadow};
   width: 20rem;
   border-radius: 5px;
   padding: 1rem;
   margin: 1rem;
+  cursor: pointer;
   &:hover {
-    box-shadow: 0 0 11px rgba(34, 34, 34, 0.4);
+    box-shadow: 0 0 11px ${theme.colors.shadowHover};
   }
   @media (max-width: 920px) {
     width: 15rem;
@@ -16,6 +18,7 @@ export const MyCard = styled.div`
   @media (max-width: 820px) {
     width: 100%;
   }
+`}}
 `;
 
 export const CardContent = styled.div`
