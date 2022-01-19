@@ -15,16 +15,18 @@ export const lightTheme = {
     primary: '#00838f',
     secondary: '#fdd835',
     bg: '#fafafa',
+    bg2: '#ffffff',
     shadow: 'rgba(0, 0, 0, 0.2)',
     shadowHover: 'rgba(34, 34, 34, 0.4)',
   },
 };
 export const darkTheme = {
-  body: '#121620',
+  body: '#303030',
   text: '#f1f1f1',
   colors: {
     primary: '#4fb3bf',
     secondary: '#fdd835',
     bg: '#263238',
+    bg2: '#424242',
   },
 };

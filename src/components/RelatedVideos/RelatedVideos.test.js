@@ -1,8 +1,17 @@
 import React from 'react';
-import { render, screen, act } from '@testing-library/react';
+import { render, screen, act, fireEvent } from '@testing-library/react';
 import RelatedVideos from './RelatedVideos';
-import { mountThemeProvider } from '../../__mocks__/MountComponent';
-import VideoProvider from '../../providers/Video/Video.provider';
+import { mountAllProviders } from '../../__mocks__/MountComponent';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: () => ({
+    pathname: 'localhost:3000/video',
+  }),
+  useHistory: () => ({
+    push: jest.fn(),
+  }),
+}));
 
 describe('<RelatedVideos />', () => {
   const mock = require('../../__mocks__/mockYouTubeAPI');
@@ -10,10 +19,8 @@ describe('<RelatedVideos />', () => {
   test('Render Video image', async () => {
     await act(async () => {
       render(
-        <VideoProvider>
-          <RelatedVideos videosList={mock.getVideos()} />
-        </VideoProvider>,
-        mountThemeProvider()
+        <RelatedVideos videosList={mock.getVideos()} setPath={jest.fn()} />,
+        mountAllProviders({}, videoProps)
       );
     });
 
@@ -22,12 +29,28 @@ describe('<RelatedVideos />', () => {
   test('Render video Title', async () => {
     await act(async () => {
       render(
-        <VideoProvider>
-          <RelatedVideos videosList={mock.getVideos()} />
-        </VideoProvider>,
-        mountThemeProvider()
+        <RelatedVideos videosList={mock.getVideos()} setPath={jest.fn()} />,
+        mountAllProviders({}, videoProps)
       );
     });
     expect(document.getElementsByTagName('p')[0]).toBeInTheDocument();
+  });
+
+  let videoProps = {
+    setCurrentVideo: () => {
+      'test';
+    },
+    fetchRelatedVideos: jest.fn(),
+  };
+  test('Action on click', async () => {
+    await act(async () => {
+      render(
+        <RelatedVideos videosList={mock.getVideos()} setPath={jest.fn()} />,
+        mountAllProviders({}, videoProps)
+      );
+    });
+    const item = screen.getByRole('img');
+    fireEvent.click(item);
+    expect(videoProps.fetchRelatedVideos).toHaveBeenCalled();
   });
 });

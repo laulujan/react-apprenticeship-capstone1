@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '../Layout/theme';
-import { usePreferences } from '../../providers/Preferences/Preferences.provider';
+import { usePreferences } from '../../providers/Preferences/provider';
 import Router from '../Router/Router';
 
 const ThemedApp = () => {

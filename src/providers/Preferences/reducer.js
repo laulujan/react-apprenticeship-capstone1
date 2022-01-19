@@ -1,4 +1,4 @@
-import { ACTIONS } from './Preferences.actions';
+import { ACTIONS } from './actions';
 import { lightTheme, darkTheme } from '../../components/Layout/theme';
 
 export const initialState = {

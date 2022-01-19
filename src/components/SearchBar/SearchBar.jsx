@@ -1,23 +1,20 @@
 import React, { useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Input from './SearchBar.styled';
-import { useVideo } from '../../providers/Video/Video.provider';
+import { useVideo } from '../../providers/Video/provider';
 
 const SearchBar = () => {
   const { searchItem, setSearchItem, fetchVideos } = useVideo();
-  const location = useLocation();
   const history = useHistory();
 
   const handleOnChange = (e) => {
     setSearchItem(e.target.value);
-    if (location.pathname !== '/') {
-      history.push('/');
-    }
   };
 
   const handleOnKeyDown = (e) => {
     if (e.key === 'Enter') {
       fetchVideos(searchItem);
+      history.push('/');
     }
   };
 

@@ -1,7 +1,7 @@
 import React, { useReducer, createContext, useContext } from 'react';
 
-import { PreferencesReducer, initialState } from './Preferences.reducer';
-import { toggleTheme } from './Preferences.actions';
+import { PreferencesReducer, initialState } from './reducer';
+import { toggleTheme } from './actions';
 
 const PreferencesContext = createContext(null);
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, waitFor, screen } from '@testing-library/react';
-import NotFound from './NotFound.page';
+import NotFound from './NotFound';
 import { MemoryRouter } from 'react-router-dom';
 
-describe('App', () => {
-  test('Render Navbar', async () => {
+describe('<Not found />', () => {
+  test('Renders not found page', async () => {
     render(
       <MemoryRouter>
         <NotFound />

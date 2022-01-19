@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-
 import { LoginMenuButton, Avatar } from './LoginMenu.styled';
 import Dropdown from '../Dropdown/Dropdown';
+import { useAuth } from '../../providers/Auth/provider';
 
 const LoginMenu = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
+  const { isLoggedIn, logout, user } = useAuth();
   const ref = useRef();
 
   useEffect(() => {
@@ -25,21 +25,40 @@ const LoginMenu = () => {
   const handleClick = () => {
     setIsDropDownOpen(!isDropDownOpen);
   };
-  const list = () => {
-    let dropdownList = [{ label: 'Login', path: '/' }];
-    if (isLogged === true) {
-      dropdownList.push({ label: 'Logout', path: '/favorites' });
-      setIsLogged(true);
+
+  const onSelect = () => {
+    if (isLoggedIn) {
+      logout();
     }
+
+    setIsDropDownOpen(false);
+  };
+  const list = () => {
+    let dropdownList = isLoggedIn
+      ? [{ label: 'Logout', path: '/' }]
+      : [{ label: 'Login', path: '/login' }];
 
     return dropdownList;
   };
   return (
     <div ref={ref}>
       <LoginMenuButton onClick={handleClick}>
-        <Avatar src="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png" />
+        <Avatar
+          alt={user?.name || 'avatar'}
+          src={
+            user?.avatarUrl ||
+            'https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png'
+          }
+        />
       </LoginMenuButton>
-      {isDropDownOpen && <Dropdown list={list} pos={{ right: 0 }} />}
+      {isDropDownOpen && (
+        <Dropdown
+          list={list}
+          pos={{ right: 0 }}
+          onClick={handleClick}
+          onSelect={onSelect}
+        />
+      )}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import ThemeButton from './ThemeButton';
-import { fireEvent, screen, act } from '@testing-library/react';
-import { mount } from '../../__mocks__/MountComponent';
+import { fireEvent, screen, act, render } from '@testing-library/react';
+import { mountAllProviders } from '../../__mocks__/MountComponent';
 
 jest.mock('../../api/youtubeAPI.js', () => {
   const mock = require('../../__mocks__/mockYouTubeAPI');
@@ -11,18 +11,25 @@ jest.mock('../../api/youtubeAPI.js', () => {
 describe('<ThemeButton />', () => {
   test('Render Theme button', async () => {
     await act(async () => {
-      mount(<ThemeButton />);
+      render(<ThemeButton />, mountAllProviders());
     });
 
     expect(screen.getByTestId('theme-button')).toBeInTheDocument();
   });
   test('Changes theme button after click', async () => {
     await act(async () => {
-      mount(<ThemeButton />);
+      render(<ThemeButton />, mountAllProviders());
     });
 
     const button = screen.getByTestId('theme-button');
     fireEvent.click(button);
+
+    expect(screen.getByTitle('dark_theme')).toBeInTheDocument();
+  });
+  test('Shows light theme on initial render', async () => {
+    await act(async () => {
+      render(<ThemeButton />, mountAllProviders());
+    });
 
     expect(screen.getByTitle('dark_theme')).toBeInTheDocument();
   });

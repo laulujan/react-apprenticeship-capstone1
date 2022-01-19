@@ -1,4 +1,4 @@
-import { ACTIONS } from './Video.actions';
+import { ACTIONS } from './actions';
 
 export const initialState = {
   loading: false,
@@ -6,6 +6,7 @@ export const initialState = {
   videos: [],
   video: null,
   searchItem: 'wizeline',
+  favorites: [],
 };
 
 export function videoReducer(state, action) {
@@ -57,6 +58,18 @@ export function videoReducer(state, action) {
       return {
         ...state,
         video: payload.video,
+      };
+    case ACTIONS.ADD_FAVORITE:
+      return {
+        ...state,
+        favorites: [...state.favorites, payload.video],
+      };
+    case ACTIONS.REMOVE_FAVORITE:
+      return {
+        ...state,
+        favorites: state.favorites.filter(
+          (video) => video.id !== payload.video.id
+        ),
       };
     default:
       throw new Error(`Invalid action "${type}"`);

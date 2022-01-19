@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeButton, LightIcon, DarkIcon } from './ThemeButton.styled';
-import { usePreferences } from '../../providers/Preferences/Preferences.provider';
+import { usePreferences } from '../../providers/Preferences/provider';
 
 const ToggleTheme = () => {
   const { isDarkThemeOn, toggleTheme } = usePreferences();
