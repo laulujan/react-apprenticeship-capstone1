@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import {
   MyCard,
   CardTitle,
@@ -6,14 +7,28 @@ import {
   CardImage,
   CardContent,
 } from './Card.styled';
+import { useVideo } from '../../providers/Video/provider';
 
-const Card = ({ video }) => {
+const Card = ({ video, isFavoritesPage }) => {
+  const history = useHistory();
+  const { setCurrentVideo } = useVideo();
+
+  const handleClick = () => {
+    setCurrentVideo(video);
+
+    let location = `/video/${video.id}`;
+    if (isFavoritesPage) {
+      location = `/favorites/${video.id}`;
+    }
+
+    history.push(location);
+  };
   return (
-    <MyCard>
-      <CardImage src={video.snippet.thumbnails.medium.url} />
+    <MyCard className="card" onClick={handleClick}>
+      <CardImage src={video.image} alt={video.title} />
       <CardContent>
-        <CardTitle>{video.snippet.title}</CardTitle>
-        <CardDescription>{video.snippet.description}</CardDescription>
+        <CardTitle>{video.title}</CardTitle>
+        <CardDescription>{video.description}</CardDescription>
       </CardContent>
     </MyCard>
   );

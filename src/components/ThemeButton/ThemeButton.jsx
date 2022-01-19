@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ThemeButton, LightIcon, DarkIcon } from './ThemeButton.styled';
+import { usePreferences } from '../../providers/Preferences/provider';
 
 const ToggleTheme = () => {
-  const [isDarkThemeOn, setIsDarkThemeOn] = useState(false);
-
-  const handleClick = () => {
-    setIsDarkThemeOn(!isDarkThemeOn);
-  };
+  const { isDarkThemeOn, toggleTheme } = usePreferences();
 
   return (
-    <div>
-      <ThemeButton onClick={handleClick}>
-        {isDarkThemeOn ? <LightIcon /> : <DarkIcon />}
+    <div data-testid="theme-button">
+      <ThemeButton onClick={toggleTheme}>
+        {isDarkThemeOn ? (
+          <LightIcon title="light_theme" />
+        ) : (
+          <DarkIcon title="dark_theme" />
+        )}
       </ThemeButton>
     </div>
   );
