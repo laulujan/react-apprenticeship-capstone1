@@ -1,45 +1,41 @@
-/* eslint-disable no-undef */
 import React from 'react';
-import { screen, render } from '@testing-library/react';
+import { screen, act, render } from '@testing-library/react';
 import CardWrapper from './CardWrapper';
-import Layout from '../Layout/Layout.component';
+import { mountAllProviders } from '../../__mocks__/MountComponent';
 
-const mockVideo = [
-  {
-    kind: 'youtube#searchResult',
-    etag: '_PVKwNJf_qw9nukFeRFOtQ837o0',
-    id: {
-      kind: 'youtube#channel',
-      channelId: 'UCPGzT4wecuWM0BH9mPiulXg',
-    },
-    snippet: {
-      publishedAt: '2014-09-27T01:39:18Z',
-      channelId: 'UCPGzT4wecuWM0BH9mPiulXg',
-      title: 'Wizeline',
-      description:
-        "Wizeline transforms how teams build technology. Its customers accelerate the delivery of innovative products with proven solutions, which combine Wizeline's ...",
-      thumbnails: {
-        default: {
-          url: 'https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s88-c-k-c0xffffffff-no-rj-mo',
-        },
-        medium: {
-          url: 'https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s240-c-k-c0xffffffff-no-rj-mo',
-        },
-        high: {
-          url: 'https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s800-c-k-c0xffffffff-no-rj-mo',
-        },
-      },
-      channelTitle: 'Wizeline',
-      liveBroadcastContent: 'upcoming',
-      publishTime: '2014-09-27T01:39:18Z',
-    },
-  },
-];
-test('Render cards', async () => {
-  render(
-    <Layout>
-      <CardWrapper videos={mockVideo} />
-    </Layout>
-  );
-  expect(screen.getByText('Wizeline')).toBeInTheDocument();
+jest.mock('../../api/youtubeAPI.js', () => {
+  const mock = require('../../__mocks__/mockYouTubeAPI');
+  return { getVideos: mock.getVideos };
+});
+
+describe('<CardWrapper />', () => {
+  const mock = require('../../__mocks__/mockYouTubeAPI');
+  let videosMock = [{ image: 'test', title: 'My Test Title', id: 'test' }];
+  let videoProps = {
+    video: {},
+    fetchVideos: mock.getVideos,
+    setSearchItem: jest.fn(),
+  };
+
+  test('Renders Cards img', async () => {
+    await act(async () => {
+      render(
+        <CardWrapper videos={videosMock} />,
+        mountAllProviders({}, videoProps)
+      );
+    });
+
+    expect(await screen.findByAltText(videosMock[0].title)).toBeInTheDocument();
+  });
+
+  test('Renders Cards title', async () => {
+    await act(async () => {
+      render(
+        <CardWrapper videos={videosMock} />,
+        mountAllProviders({}, videoProps)
+      );
+    });
+
+    expect(await screen.findByRole('heading')).toBeInTheDocument();
+  });
 });

@@ -1,72 +1,89 @@
-----------------------------|----------|----------|----------|----------|-------------------|
-File                        |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
-----------------------------|----------|----------|----------|----------|-------------------|
-All files                   |    65.81 |    71.43 |    63.83 |    66.09 |                   |
- src                        |        0 |      100 |      100 |        0 |                   |
-  index.js                  |        0 |      100 |      100 |        0 |                 7 |
- src/api                    |    66.67 |      100 |       50 |    66.67 |                   |
-  mockApi.js                |    66.67 |      100 |       50 |    66.67 |                 4 |
- src/components/App         |      100 |      100 |      100 |      100 |                   |
-  App.component.jsx         |      100 |      100 |      100 |      100 |                   |
-  index.js                  |        0 |        0 |        0 |        0 |                   |
- src/components/Card        |      100 |      100 |      100 |      100 |                   |
-  Card.jsx                  |      100 |      100 |      100 |      100 |                   |
-  Card.styled.js            |      100 |      100 |      100 |      100 |                   |
- src/components/CardWrapper |      100 |      100 |      100 |      100 |                   |
-  CardWrapper.jsx           |      100 |      100 |      100 |      100 |                   |
-  CardWrapper.styled.js     |      100 |      100 |      100 |      100 |                   |
- src/components/Dropdown    |      100 |      100 |      100 |      100 |                   |
-  Dropdown.jsx              |      100 |      100 |      100 |      100 |                   |
-  Dropdown.styled.js        |      100 |      100 |      100 |      100 |                   |
- src/components/Fortune     |        0 |      100 |        0 |        0 |                   |
-  Fortune.component.jsx     |        0 |      100 |        0 |        0 |               7,9 |
-  index.js                  |        0 |        0 |        0 |        0 |                   |
- src/components/Layout      |      100 |      100 |      100 |      100 |                   |
-  Layout.component.jsx      |      100 |      100 |      100 |      100 |                   |
-  index.js                  |        0 |        0 |        0 |        0 |                   |
-  theme.js                  |      100 |      100 |      100 |      100 |                   |
- src/components/LoginMenu   |      100 |      100 |      100 |      100 |                   |
-  LoginMenu.jsx             |      100 |      100 |      100 |      100 |                   |
-  LoginMenu.styled.js       |      100 |      100 |      100 |      100 |                   |
- src/components/Menu        |      100 |      100 |      100 |      100 |                   |
-  Menu.jsx                  |      100 |      100 |      100 |      100 |                   |
-  Menu.styled.js            |      100 |      100 |      100 |      100 |                   |
- src/components/Navbar      |      100 |      100 |      100 |      100 |                   |
-  Navbar.jsx                |      100 |      100 |      100 |      100 |                   |
-  Navbar.styled.js          |      100 |      100 |      100 |      100 |                   |
- src/components/Private     |        0 |        0 |        0 |        0 |                   |
-  Private.component.jsx     |        0 |        0 |        0 |        0 |           8,10,13 |
-  index.js                  |        0 |        0 |        0 |        0 |                   |
- src/components/SearchBar   |      100 |      100 |      100 |      100 |                   |
-  SearchBar.jsx             |      100 |      100 |      100 |      100 |                   |
-  SearchBar.styled.js       |      100 |      100 |      100 |      100 |                   |
- src/components/ThemeButton |      100 |      100 |      100 |      100 |                   |
-  ThemeButton.jsx           |      100 |      100 |      100 |      100 |                   |
-  ThemeButton.styled.js     |      100 |      100 |      100 |      100 |                   |
- src/pages/Home             |       80 |      100 |    66.67 |      100 |                   |
-  Home.page.jsx             |       80 |      100 |    66.67 |      100 |                   |
-  index.js                  |        0 |        0 |        0 |        0 |                   |
- src/pages/Login            |        0 |      100 |        0 |        0 |                   |
-  Login.page.jsx            |        0 |      100 |        0 |        0 |   8,9,12,13,14,17 |
-  index.js                  |        0 |        0 |        0 |        0 |                   |
- src/pages/NotFound         |        0 |      100 |        0 |        0 |                   |
-  NotFound.page.jsx         |        0 |      100 |        0 |        0 |                 7 |
-  index.js                  |        0 |        0 |        0 |        0 |                   |
- src/pages/Secret           |        0 |      100 |        0 |        0 |                   |
-  Secret.page.jsx           |        0 |      100 |        0 |        0 |                 5 |
-  index.js                  |        0 |        0 |        0 |        0 |                   |
- src/providers/Auth         |    52.94 |        0 |       40 |    52.94 |                   |
-  Auth.provider.jsx         |    52.94 |        0 |       40 |    52.94 |... 13,28,29,33,34 |
-  index.js                  |        0 |        0 |        0 |        0 |                   |
- src/utils                  |    55.56 |      100 |    33.33 |    55.56 |                   |
-  constants.js              |      100 |      100 |      100 |      100 |                   |
-  fns.js                    |        0 |      100 |        0 |        0 |                 2 |
-  storage.js                |    57.14 |      100 |       50 |    57.14 |            7,8,13 |
- src/utils/hooks            |        0 |      100 |        0 |        0 |                   |
-  useFortune.js             |        0 |      100 |        0 |        0 |... 17,19,21,25,28 |
-----------------------------|----------|----------|----------|----------|-------------------|
+------------------------------|---------|----------|---------|---------|----------------------
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s    
+------------------------------|---------|----------|---------|---------|----------------------
+All files                     |   86.02 |       80 |   86.29 |   85.71 |                      
+ src                          |       0 |      100 |     100 |       0 |                      
+  index.js                    |       0 |      100 |     100 |       0 | 7                    
+ src/api                      |   44.82 |       75 |   55.55 |   42.85 |                      
+  fetchVideos.js              |   85.71 |      100 |     100 |   83.33 | 9                    
+  gapi.js                     |       0 |      100 |       0 |       0 | 2-9                  
+  loginAPI.js                 |   83.33 |       75 |     100 |   83.33 | 14                   
+  youtubeAPI.js               |   18.18 |      100 |       0 |   18.18 | 2-9,13-23            
+ src/components/App           |     100 |      100 |     100 |     100 |                      
+  App.jsx                     |     100 |      100 |     100 |     100 |                      
+ src/components/Card          |     100 |      100 |     100 |     100 |                      
+  Card.jsx                    |     100 |      100 |     100 |     100 |                      
+  Card.styled.js              |     100 |      100 |     100 |     100 |                      
+ src/components/CardWrapper   |     100 |      100 |     100 |     100 |                      
+  CardWrapper.jsx             |     100 |      100 |     100 |     100 |                      
+  CardWrapper.styled.js       |     100 |      100 |     100 |     100 |                      
+ src/components/Dropdown      |     100 |      100 |     100 |     100 |                      
+  Dropdown.jsx                |     100 |      100 |     100 |     100 |                      
+  Dropdown.styled.js          |     100 |      100 |     100 |     100 |                      
+ src/components/Layout        |   66.66 |      100 |   33.33 |   66.66 |                      
+  Layout.jsx                  |     100 |      100 |     100 |     100 |                      
+  theme.js                    |      60 |      100 |       0 |      60 | 5-6                  
+ src/components/LoginMenu     |     100 |    93.33 |     100 |     100 |                      
+  LoginMenu.jsx               |     100 |    93.33 |     100 |     100 | 30                   
+  LoginMenu.styled.js         |     100 |      100 |     100 |     100 |                      
+ src/components/Menu          |   95.83 |      100 |    87.5 |   95.83 |                      
+  Menu.jsx                    |   95.23 |      100 |   85.71 |   95.23 | 29                   
+  Menu.styled.js              |     100 |      100 |     100 |     100 |                      
+ src/components/Navbar        |     100 |      100 |     100 |     100 |                      
+  Navbar.jsx                  |     100 |      100 |     100 |     100 |                      
+  Navbar.styled.js            |     100 |      100 |     100 |     100 |                      
+ src/components/Private       |     100 |      100 |     100 |     100 |                      
+  Private.jsx                 |     100 |      100 |     100 |     100 |                      
+ src/components/RelatedVideos |     100 |      100 |     100 |     100 |                      
+  RelatedVideos.jsx           |     100 |      100 |     100 |     100 |                      
+  RelatedVideos.styled.js     |     100 |      100 |     100 |     100 |                      
+ src/components/Router        |     100 |      100 |     100 |     100 |                      
+  Router.jsx                  |     100 |      100 |     100 |     100 |                      
+ src/components/SearchBar     |   85.71 |       50 |     100 |   85.71 |                      
+  SearchBar.jsx               |   83.33 |       50 |     100 |   83.33 | 16-17                
+  SearchBar.styled.js         |     100 |      100 |     100 |     100 |                      
+ src/components/ThemeButton   |     100 |       50 |     100 |     100 |                      
+  ThemeButton.jsx             |     100 |       50 |     100 |     100 | 11                   
+  ThemeButton.styled.js       |     100 |      100 |     100 |     100 |                      
+ src/components/ThemedApp     |     100 |      100 |     100 |     100 |                      
+  ThemedApp.jsx               |     100 |      100 |     100 |     100 |                      
+ src/components/VideoPlayer   |     100 |      100 |     100 |     100 |                      
+  VideoPlayer.jsx             |     100 |      100 |     100 |     100 |                      
+  VideoPlayer.styled.js       |     100 |      100 |     100 |     100 |                      
+ src/pages/Favorites          |     100 |      100 |     100 |     100 |                      
+  Favorites.jsx               |     100 |      100 |     100 |     100 |                      
+  Favorites.styled.js         |     100 |      100 |     100 |     100 |                      
+ src/pages/Home               |     100 |      100 |     100 |     100 |                      
+  Home.jsx                    |     100 |      100 |     100 |     100 |                      
+ src/pages/Login              |   95.83 |    66.66 |     100 |   95.83 |                      
+  Login.jsx                   |   93.75 |    66.66 |     100 |   93.75 | 21                   
+  Login.styled.js             |     100 |      100 |     100 |     100 |                      
+ src/pages/NotFound           |     100 |      100 |     100 |     100 |                      
+  NotFound.jsx                |     100 |      100 |     100 |     100 |                      
+ src/pages/VideoDetails       |   85.71 |       75 |      75 |   85.71 |                      
+  VideoDetails.jsx            |   84.61 |       75 |      75 |   84.61 | 11-14                
+  VideoDetails.styled.js      |     100 |      100 |     100 |     100 |                      
+ src/providers/Auth           |   65.51 |     62.5 |   71.42 |   62.96 |                      
+  actions.js                  |   38.46 |      100 |      50 |   27.27 | 11-26,31             
+  context.js                  |     100 |      100 |     100 |     100 |                      
+  provider.jsx                |   85.71 |       50 |     100 |   85.71 | 11                   
+  reducer.js                  |    87.5 |    66.66 |     100 |    87.5 | 22                   
+ src/providers/Preferences    |   84.21 |       50 |      80 |   83.33 |                      
+  actions.js                  |      75 |      100 |      50 |   66.66 | 6                    
+  provider.js                 |   88.88 |       50 |     100 |   88.88 | 11                   
+  reducer.js                  |   83.33 |       50 |     100 |   83.33 | 22                   
+ src/providers/Video          |      84 |       75 |      76 |   83.58 |                      
+  actions.js                  |   82.05 |     62.5 |      80 |   78.78 | 42-46,66-70,75,83,87 
+  context.js                  |     100 |      100 |     100 |     100 |                      
+  provider.js                 |      85 |       50 |      75 |   88.88 | 19,46                
+  reducer.js                  |   86.66 |    91.66 |      50 |   86.66 | 71-75                
+ src/utils                    |   77.77 |      100 |     100 |   77.77 |                      
+  constants.js                |     100 |      100 |     100 |     100 |                      
+  storage.js                  |   71.42 |      100 |     100 |   71.42 | 7-8                  
+------------------------------|---------|----------|---------|---------|----------------------
 
-Test Suites: 7 passed, 7 total
-Tests:       9 passed, 9 total
+Test Suites: 21 passed, 21 total
+Tests:       78 passed, 78 total
 Snapshots:   0 total
-Time:        8.292s
+Time:        8.281 s
+Ran all test suites.
