@@ -9,7 +9,7 @@ import {
 } from './Card.styled';
 import { useVideo } from '../../providers/Video/provider';
 
-const Card = ({ video, isFavorites }) => {
+const Card = ({ video, isFavoritesPage }) => {
   const history = useHistory();
   const { setCurrentVideo } = useVideo();
 
@@ -17,7 +17,7 @@ const Card = ({ video, isFavorites }) => {
     setCurrentVideo(video);
 
     let location = `/video/${video.id}`;
-    if (isFavorites) {
+    if (isFavoritesPage) {
       location = `/favorites/${video.id}`;
     }
 

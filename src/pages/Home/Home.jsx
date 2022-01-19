@@ -8,7 +8,7 @@ function HomePage() {
   return (
     <>
       {videos ? (
-        <CardWrapper videos={videos} isFavorites={false} />
+        <CardWrapper videos={videos} isFavoritesPage={false} />
       ) : (
         <div>No videos found</div>
       )}

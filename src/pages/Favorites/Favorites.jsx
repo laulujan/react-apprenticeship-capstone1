@@ -8,7 +8,7 @@ const Favorites = () => {
   return (
     <>
       {favorites.length > 0 ? (
-        <CardWrapper videos={favorites} isFavorites={true} />
+        <CardWrapper videos={favorites} isFavoritesPage={true} />
       ) : (
         <Box>No Favorite videos Found</Box>
       )}
